@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #step 1 create new variable
-url = 'https://id.indeed.com/jobs'
+url = 'https://www.indeed.com/jobs?q=Python+Developer&l=New+York+State&radius=30'
 
 #step 5 create variable params
 params = {
@@ -20,10 +20,12 @@ headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 #step 6 masukan parameter ke variabel res
 res = requests.get(url, params = params, headers = headers)
 
+#step 4 check status.code sudah selesai
+#print(res.status_code)
+
+
 #step 7 menggunakan beautifulsoup
 #soup=BeautifulSoup(res.text, 'html.parser') dicut dipindahkan ke step 10
-
-
 
 
 #step 8 membuat fungsi total page yang isinya params dict
@@ -46,12 +48,13 @@ def get_total_pages():
         outfile.write(res.text)
         outfile.close()
 
-#scraping step
+#step 11 scraping step total pages
     soup = BeautifulSoup(res.text, 'html.parser')
-    print(soup.prettify())
+    pagination = soup.find('ul', 'pagination-list')
+    print(pagination)
+
 
 if __name__ == '__main__':
     get_total_pages()
 
-#step 4 check status.code sudah selesai
-#print(res.status_code)
+
