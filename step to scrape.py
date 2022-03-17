@@ -6,12 +6,14 @@ import requests
 from bs4 import BeautifulSoup
 
 #step 1 create new variable
-url = 'https://www.indeed.com/jobs?q=Python+Developer&l=New+York+State&radius=30'
+url = 'https://www.indeed.com/jobs?q='
 
 #step 5 create variable params
 params = {
-    'q':'pyhton developer',
-    'l':'new york'
+    'q': 'Pyhton Developer',
+    'l': 'New York State',
+    'vjk': 'ae05cced9394f20d'
+
 }
 #step 7 membuat variable baru untuk user agent
 headers = {'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
@@ -33,8 +35,9 @@ res = requests.get(url, params = params, headers = headers)
 
 def get_total_pages():
     params = {
-        'q': 'pyhton developer',
-        'l': 'new york'
+        'q': 'Pyhton Developer',
+        'l': 'New York State',
+        'vjk': 'ae05cced9394f20d'
     }
     res = requests.get(url, params = params, headers = headers)
 
